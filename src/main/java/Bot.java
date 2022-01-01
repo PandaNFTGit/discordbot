@@ -8,12 +8,20 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Bot {
 
-    public static void main(String[] args) throws LoginException, InterruptedException {
+    public static void main(String[] args) throws LoginException, InterruptedException, IOException {
 
-        JDABuilder builder = JDABuilder.createDefault("NzcyODQ2NzkzMTg3OTE3ODY1.X6Anqg.A5YK2Wez2iblR1eGFotsL-qXPJ0")
+
+        Path path = Path.of("C:\\Users\\Administrator\\Desktop\\bottoken.txt");
+        String token = String.valueOf(Files.readAllLines(path).get(0));
+
+
+        JDABuilder builder = JDABuilder.createDefault(token)
             .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .enableIntents(GatewayIntent.GUILD_PRESENCES)
             .enableCache(CacheFlag.MEMBER_OVERRIDES)
