@@ -33,6 +33,9 @@ public class ScholarshipCommand extends ListenerAdapter {
         }
 
 
+        if (!Util.hasRole(event.getMember(), "Project Manager")){
+            return;
+        }
 
         if (event.getMessage().getContentRaw().toLowerCase().equalsIgnoreCase("?removerank")){
 
@@ -88,15 +91,6 @@ public class ScholarshipCommand extends ListenerAdapter {
             }
         }*/
 
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains("civil status") || event.getMessage().getContentRaw().toLowerCase().contains("looking for axie scholarship") ||
-                event.getMessage().getContentRaw().toLowerCase().contains("location") || event.getMessage().getContentRaw().toLowerCase().contains("hire me") ||
-                event.getMessage().getContentRaw().toLowerCase().contains("here to apply for a scholarship") || event.getMessage().getContentRaw().toLowerCase().contains("here to apply for scholarship") ||
-                event.getMessage().getContentRaw().toLowerCase().contains("internet:") || event.getMessage().getContentRaw().toLowerCase().contains("reason why should we choose you") || event.getMessage().getContentRaw().toLowerCase().contains("occupation")) {
-            event.getMessage().delete().queue();
-            event.getChannel().sendMessage(event.getMember().getAsMention() + " Do not send resumes! Read " + event.getGuild().getTextChannelById(867088719306948648L).getAsMention() + " to become a scholar!").queue();
-            return;
-        }
 
        /* if (event.getMessage().getMember().getIdLong() == 720351927581278219L) {
 
