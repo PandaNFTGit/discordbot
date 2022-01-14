@@ -32,12 +32,25 @@ public class ScholarshipCommand extends ListenerAdapter {
             return;
         }
 
+        if (!Util.hasRole(event.getMember(), "Marketing Manager")){
+            return;
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().startsWith("!id")){
+
+            for (var member : event.getGuild().getMembers()) {
+                if (member.getIdLong() == Long.parseLong(event.getMessage().getContentRaw().split(" ")[1])){
+                    event.getChannel().sendMessage(member.getAsMention() + " " + member.getUser().getAsTag()).queue() ;
+                }
+            }
+        }
+
 
         if (!Util.hasRole(event.getMember(), "Project Manager")){
             return;
         }
 
-        if (event.getMessage().getContentRaw().toLowerCase().equalsIgnoreCase("?removerank")){
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("?removerank")){
 
             for (int i = 0; i < event.getGuild().getRoles().size(); i++){
                 if (event.getGuild().getRoles().get(i).getIdLong() == 925558862478717058L){
@@ -53,7 +66,7 @@ public class ScholarshipCommand extends ListenerAdapter {
             return;
         }
 
-        if (event.getMessage().getContentRaw().toLowerCase().equalsIgnoreCase("?validateuser")){
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("?validateuser")){
 
             for (int i = 0; i < event.getGuild().getMembers().size(); i++){
                 if (!event.getGuild().getMembers().get(i).getUser().isBot() && event.getGuild().getMembers().get(i).getOnlineStatus() == OnlineStatus.ONLINE
@@ -66,7 +79,7 @@ public class ScholarshipCommand extends ListenerAdapter {
             }
             return;
         }
-        if (event.getMessage().getContentRaw().toLowerCase().equalsIgnoreCase("?kickuser")){
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("?kickuser")){
 
             for (int i = 0; i < event.getGuild().getMembers().size(); i++){
                 if (!event.getGuild().getMembers().get(i).getUser().isBot() && event.getGuild().getMembers().get(i).getOnlineStatus() == OnlineStatus.OFFLINE
