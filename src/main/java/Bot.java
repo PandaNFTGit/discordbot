@@ -1,4 +1,5 @@
 import GuildMemberJoin.WelcomeCommands;
+import commands.ReactionAddCommand;
 import commands.ScholarshipCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -17,11 +18,9 @@ public class Bot {
     public static void main(String[] args) throws LoginException, InterruptedException, IOException {
 
 
-        Path path = Path.of("C:\\Users\\Administrator\\Desktop\\bottoken.txt");
-        String token = String.valueOf(Files.readAllLines(path).get(0));
 
 
-        JDABuilder builder = JDABuilder.createDefault(token)
+        JDABuilder builder = JDABuilder.createDefault("NzcyODQ2NzkzMTg3OTE3ODY1.X6Anqg.6X29zIA65nyURKPYSxgXhQ6oD4E")
             .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .enableIntents(GatewayIntent.GUILD_PRESENCES)
             .enableCache(CacheFlag.MEMBER_OVERRIDES)
@@ -33,7 +32,8 @@ public class Bot {
 
         jda.addEventListener(
               new ScholarshipCommand()
-               , new WelcomeCommands()
+               , new WelcomeCommands(),
+                new ReactionAddCommand()
         );
 
         jda.awaitReady();

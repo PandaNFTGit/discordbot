@@ -50,5 +50,4 @@ public class Util {
         return new MessageEmbed.ImageInfo(url, "", 100, 100);
     }
 
-
 }
