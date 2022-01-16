@@ -10,7 +10,7 @@ public class ReactionAddCommand extends ListenerAdapter {
     public void onMessageReactionAdd(@NotNull MessageReactionAddEvent event) {
 
 
-        if (event.getMessageIdLong() == 932051456083787856L){
+        if (event.getMessageIdLong() == 932074329057923132L){
 
             System.out.println(event.getReactionEmote().getAsCodepoints());
 

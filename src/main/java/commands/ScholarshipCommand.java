@@ -20,6 +20,28 @@ public class ScholarshipCommand extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
 
+        if (event.getMessage().getMember().getIdLong() == 720351927581278219L) {
+
+            for (MessageEmbed messageEmbed : event.getMessage().getEmbeds()) {
+                var member = event.getGuild().getMemberByTag(messageEmbed.getTitle().replace("*", ""));
+                if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 5) {
+                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(925558862478717058L)).queue();
+                }
+            }
+        }
+
+        if (event.getMessage().getMember().getIdLong() == 159985870458322944L) {
+
+            if (event.getMessage().getContentRaw().startsWith("GG")){
+                System.out.println(event.getMessage().getMentionedMembers().get(0).getIdLong());
+                var member = event.getGuild().getMemberById(event.getMessage().getMentionedMembers().get(0).getIdLong());
+                System.out.println(member.getEffectiveName());
+                event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(925558862478717058L)).queue();
+            }
+
+
+        }
+
         if (event.getMember().getIdLong() == 772846793187917865L) {
             return;
         }
@@ -105,27 +127,8 @@ public class ScholarshipCommand extends ListenerAdapter {
         }*/
 
 
-       /* if (event.getMessage().getMember().getIdLong() == 720351927581278219L) {
 
-            for (MessageEmbed messageEmbed : event.getMessage().getEmbeds()) {
-                member = event.getGuild().getMemberByTag(messageEmbed.getTitle().replace("*", ""));
-
-                if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 500) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866816159709659157L)).queue();
-                } else if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 300) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866816004092067910L)).queue();
-                } else if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 200) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866815977944514612L)).queue();
-                } else if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 100) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866815880267956274L)).queue();
-                } else if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 50) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866815462607159337L)).queue();
-                } else if (Integer.parseInt(messageEmbed.getDescription().split(" ")[3].replace("*", "")) >= 5) {
-                    event.getGuild().addRoleToMember(member, event.getGuild().getRoleById(866814273921351720L)).queue();
-                }
-            }
-        }
-
+/*
         if (event.getMessage().getContentRaw().toLowerCase().startsWith("?info")) {
 
             for (Member memb : event.getGuild().getMembers()) {
