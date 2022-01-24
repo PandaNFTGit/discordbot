@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ITU_Bot" />
         <module name="ITU Bot" />
+        <module name="discordbot" />
       </profile>
     </annotationProcessing>
   </component>

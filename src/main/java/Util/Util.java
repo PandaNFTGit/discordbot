@@ -50,4 +50,15 @@ public class Util {
         return new MessageEmbed.ImageInfo(url, "", 100, 100);
     }
 
+    public static void setChannelName(Guild event){
+
+        var channel = event.getGuildChannelById(933518711262953542L);
+        var whiteListByLevel = event.getMembersWithRoles(event.getRoleById(925558862478717058L)).size();
+        var whiteListByInvite = event.getMembersWithRoles(event.getRoleById(934762373129072661L)).size();
+
+        var size = whiteListByInvite + whiteListByLevel;
+
+        channel.getManager().setName("⚪・WL " + size + "/400").queue();
+    }
+
 }
